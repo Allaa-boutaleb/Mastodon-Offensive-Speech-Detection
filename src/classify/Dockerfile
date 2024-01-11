@@ -1,11 +1,15 @@
-# Use an official Python runtime as base image
+# Use an official Python runtime as a base image
 FROM python:3.8
 
-WORKDIR /app
+# Set the working directory in the container
+WORKDIR /app/classify
 
-COPY . /app
+# Copy the current directory contents into the container at /app/classify
+COPY classify/ .
 
-RUN pip install --upgrade pip
-RUN pip install -r requirements.txt
+# Install any needed packages specified in requirements.txt
+RUN pip install --upgrade pip && \
+    pip install -r requirements.txt
 
-CMD [ "python","main.py" ]
+# Run main.py when the container launches
+CMD ["python", "main.py"]
