@@ -2,14 +2,14 @@
 FROM python:3.8
 
 # Set the working directory in the container
-WORKDIR /app/etl
+WORKDIR /app/
 
 # Copy the current directory contents into the container at /app/classify
-COPY etl/ .
+COPY . .
 
 # Install any needed packages specified in requirements.txt
-RUN pip install --no-cache-dir --upgrade pip && \
-    pip install --no-cache-dir -r requirements.txt
+RUN pip install --upgrade pip && \
+    pip install -r requirements.txt
 
 # Run main.py when the container launches
-CMD ["python", "toot_collector.py"]
+CMD ["python", "main.py"]

@@ -1,6 +1,6 @@
-from model import *
+from classify.model import *
 import click
-from toot_collector import *
+from etl.toot_collector import *
 from logger import logging
 
 
@@ -10,9 +10,11 @@ from logger import logging
 def main(import_toots, hashtag):
     pipe = Classifier("facebook/roberta-hate-speech-dynabench-r4-target")
     if import_toots:
+        logging.info('Extracting toots from Mastodon initiated')
         importer = MastodonCollector()
         importer.fetch_tweets(limit=10000, hashtag=hashtag)
-
+        logging.info('Extracting toots from Mastodon completed')
+    
     conn = 'mongodb://mongo_social'
     client = MongoClient(conn, port=27017)
 
@@ -31,6 +33,7 @@ def main(import_toots, hashtag):
         #TODO finish this and define use case.
         
     print('all is good so far')
+    logging.info('Extraction process finished')
 
 if __name__ == '__main__':
     main()

@@ -1,10 +1,12 @@
-version: '1.0'
+version: '3.8'
 services:
   app:
-    build: ./src/classify/
+    build:
+      context: ./src
+      dockerfile: ./Dockerfile
     container_name: hate_classifier
     volumes:
-      - ./src/classify:./app
+      - ./src:/app
     depends_on:
       - mongodb
     
@@ -12,4 +14,4 @@ services:
     image: mongo:latest
     container_name: mongo_social
     ports:
-      - 27017:27017
+      - "27017:27017"
