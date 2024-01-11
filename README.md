@@ -14,3 +14,5 @@ Edited for specific use case of storing tweets in MongoDB.
 - [ ] Define the criteria to fetch data, the number of toots we want
 - [ ] Select the model to be used (baseline/pretrained) to label our data and add the labeling code in main.py (store to mongodb)
 - [ ] Select the model to be used to train our labeled dataset (classification task), and the metrics (imbalanced data)
+- [ ] Add a part for generating/analyzing plots and graphics and commenting the results
+- [ ] Detail the ReadMe File (How to run the code as a whole) and add some guidelines for the report team
