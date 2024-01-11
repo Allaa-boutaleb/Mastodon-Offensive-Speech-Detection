@@ -1,0 +1,15 @@
+version: '1.0'
+services:
+  app:
+    build: ./src/classify/
+    container_name: hate_classifier
+    volumes:
+      - ./src/classify:./app
+    depends_on:
+      - mongodb
+    
+  mongodb:
+    image: mongo:latest
+    container_name: mongo_social
+    ports:
+      - 27017:27017
