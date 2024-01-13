@@ -1,7 +1,0 @@
-click
-transformers
-tensorflow
-mastodon.py
-pymongo
-bs4
-requests

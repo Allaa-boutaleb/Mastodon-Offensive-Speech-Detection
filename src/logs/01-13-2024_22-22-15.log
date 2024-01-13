@@ -1,0 +1,13 @@
+[ 2024-01-13 22:22:21,522 ] 33 root - INFO - Splitting data into training and testing sets
+[ 2024-01-13 22:22:21,524 ] 37 root - INFO - Vectorizing text data
+[ 2024-01-13 22:22:21,549 ] 65 root - INFO - Training Logistic Regression
+[ 2024-01-13 22:22:21,895 ] 76 root - INFO - Model Logistic Regression - Accuracy: 1.0, Precision: 0.0, Recall: 0.0, F1 Score: 0.0
+[ 2024-01-13 22:22:21,896 ] 65 root - INFO - Training Random Forest
+[ 2024-01-13 22:22:23,278 ] 76 root - INFO - Model Random Forest - Accuracy: 1.0, Precision: 0.0, Recall: 0.0, F1 Score: 0.0
+[ 2024-01-13 22:22:23,281 ] 65 root - INFO - Training SVM
+[ 2024-01-13 22:22:23,857 ] 76 root - INFO - Model SVM - Accuracy: 1.0, Precision: 0.0, Recall: 0.0, F1 Score: 0.0
+[ 2024-01-13 22:22:23,858 ] 65 root - INFO - Training Naive Bayes
+[ 2024-01-13 22:22:23,926 ] 76 root - INFO - Model Naive Bayes - Accuracy: 1.0, Precision: 0.0, Recall: 0.0, F1 Score: 0.0
+[ 2024-01-13 22:22:23,927 ] 85 root - INFO - Best model found on train and test dataset: Logistic Regression
+[ 2024-01-13 22:22:24,004 ] 97 root - INFO - Model and preprocessor saved to disk successfully
+[ 2024-01-13 22:22:24,005 ] 58 root - INFO - Extraction process finished

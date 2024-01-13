@@ -1,0 +1,3 @@
+[ 2024-01-13 22:10:44,477 ] 33 root - INFO - Splitting data into training and testing sets
+[ 2024-01-13 22:10:44,479 ] 37 root - INFO - Vectorizing text data
+[ 2024-01-13 22:10:44,508 ] 65 root - INFO - Training Logistic Regression
