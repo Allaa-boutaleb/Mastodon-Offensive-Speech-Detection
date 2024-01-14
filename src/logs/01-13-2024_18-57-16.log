@@ -1,9 +1,0 @@
-[ 2024-01-13 18:57:23,882 ] 14 root - INFO - Extracting toots from Mastodon initiated
-[ 2024-01-13 18:57:24,090 ] 17 root - INFO - Entered the data ingestion process
-[ 2024-01-13 18:57:24,661 ] 26 root - INFO - Extracting toots from Mastodon initiated
-[ 2024-01-13 18:57:24,693 ] 41 root - INFO - Extracting toots from Mastodon completed successfully
-[ 2024-01-13 18:57:24,694 ] 43 root - INFO - Connexion to the mongodb client initiated
-[ 2024-01-13 18:57:24,748 ] 57 root - INFO - Data inserted successfully
-[ 2024-01-13 18:57:24,749 ] 61 root - INFO - Data inserted successfully
-[ 2024-01-13 18:57:24,751 ] 63 root - INFO - Connexion to the mongodb client closed successfully
-[ 2024-01-13 18:57:24,756 ] 17 root - INFO - Extracting toots from Mastodon completed

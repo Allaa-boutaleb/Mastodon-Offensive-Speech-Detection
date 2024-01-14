@@ -61,22 +61,31 @@ class ModelTrainer:
             }
 
             model_report = {}
+            fitted_models = {}
             for name, model in models.items():
                 logging.info(f"Training {name}")
                 if name in params:
                     model = GridSearchCV(model, params[name], cv=5, scoring='f1')
-                model.fit(X_train, y_train)
-                predictions = model.predict(X_test)
+                    model.fit(X_train, y_train)
+                    best_model = model.best_estimator_  # Use the best estimator from GridSearchCV
+                    fitted_models[name] = model
+                else:
+                    model.fit(X_train, y_train)
+                    best_model = model  # Use the directly fitted model
+                    fitted_models[name] = model
+
+                predictions = best_model.predict(X_test)
                 accuracy = accuracy_score(y_test, predictions)
-                precision = precision_score(y_test, predictions)
-                recall = recall_score(y_test, predictions)
-                f1 = f1_score(y_test, predictions)
+                precision = precision_score(y_test, predictions, zero_division=0)
+                recall = recall_score(y_test, predictions, zero_division=0)
+                f1 = f1_score(y_test, predictions, zero_division=0)
                 model_report[name] = f1
                 logging.info(f"Model {name} - Accuracy: {accuracy}, Precision: {precision}, Recall: {recall}, F1 Score: {f1}")
 
             best_model_score = max(model_report.values())
             best_model_name = max(model_report, key=model_report.get)
-            best_model = models[best_model_name]
+            # best_model = models[best_model_name]
+            best_model = fitted_models[best_model_name]
 
             # if best_model_score < BEST_MODEL_SELECTION_THRESHOLD:
             #    raise CustomException("No best model found for the given threshold")

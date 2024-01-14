@@ -1,5 +1,5 @@
 import click
-from etl.toot_collector import *
+from etl.extract import *
 from etl.transform import *
 from logger import logging
 import pandas as pd
@@ -15,7 +15,7 @@ def main(import_toots, label_toots, hashtag, train_model):
     if import_toots:
         logging.info('Extracting toots from Mastodon initiated')
         importer = MastodonCollector()
-        importer.fetch_tweets(limit=10000, hashtag=hashtag)
+        importer.fetch_tweets(limit=40, hashtag=hashtag)
         logging.info('Extracting toots from Mastodon completed')
     
     if label_toots:
@@ -31,20 +31,23 @@ def main(import_toots, label_toots, hashtag, train_model):
         df = pd.json_normalize(toots)
         df = pipe.label_dataset(df)
 
-        df.to_csv('toots.csv', index=False)
+        df.to_csv('data/toots_labeled.csv', index=False)
         logging.info('Labeling toots from Mastodon completed')
 
     if train_model:
+        logging.info('Model training initiated')
         # Create an instance of the ModelTrainer
         trainer = ModelTrainer()
 
-        df = pd.read_csv('toots.csv', header=0)
+        df = pd.read_csv('data/toots_labeled.csv', header=0)
         df = df[df['y'] != "('error', 0)"]
         # Use the initiate_model_trainer method with your data
         result = trainer.initiate_model_trainer(X=df['content'], y=df['y'])
 
         # `result` will contain the performance metrics of the best model
         print(result)
+
+        logging.info('Model training completed')
 
     # this shouldn't fetch all tweets: TODO
     # cursor = db.mastodon_table.find()
@@ -55,7 +58,7 @@ def main(import_toots, label_toots, hashtag, train_model):
         #TODO finish this and define use case.
         
     print('all is good so far')
-    logging.info('Extraction process finished')
+    
 
 if __name__ == '__main__':
     main()
