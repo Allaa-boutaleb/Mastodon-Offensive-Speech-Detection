@@ -42,5 +42,5 @@ To run this project on your own machine, you need to perform the following steps
 - [x] Define the criteria to fetch data, the number of toots we want
 - [x] Select the model to be used (baseline/pretrained) to label our data and add the labeling code in main.py (now facebook roberta).
 - [x] Select the model to be used to train our labeled dataset (classification task), and the metrics (imbalanced data) (now logistic regression, random forests, svm, decision trees).
-- [ ] Add a part for generating/analyzing plots and graphics and commenting the results
 - [x] Detail the ReadMe File (How to run the code as a whole) and add some guidelines for the report team
+- [ ] Add a part for generating/analyzing plots and graphics and commenting the results
