@@ -13,13 +13,13 @@ from classify.model_trainer import ModelTrainer
 @click.option('--train_model', default=True)
 def main(import_toots, label_toots, hashtag, train_model):
     if import_toots:
-        logging.info('Extracting toots from Mastodon initiated')
+        logging.info('----Extracting toots from Mastodon initiated')
         importer = MastodonCollector()
-        importer.fetch_tweets(limit=40, hashtag=hashtag)
-        logging.info('Extracting toots from Mastodon completed')
+        importer.fetch_tweets(limit=40, total_toots_required=10000, hashtag=hashtag)
+        logging.info('----Extracting toots from Mastodon completed')
     
     if label_toots:
-        logging.info('Labeling toots from Mastodon initiated')
+        logging.info('----Labeling toots from Mastodon initiated')
         conn = 'mongodb://mongo_social'
         client = MongoClient(conn, port=27017)
 
@@ -32,10 +32,10 @@ def main(import_toots, label_toots, hashtag, train_model):
         df = pipe.label_dataset(df)
 
         df.to_csv('data/toots_labeled.csv', index=False)
-        logging.info('Labeling toots from Mastodon completed')
+        logging.info('----Labeling toots from Mastodon completed')
 
     if train_model:
-        logging.info('Model training initiated')
+        logging.info('----Model training initiated')
         # Create an instance of the ModelTrainer
         trainer = ModelTrainer()
 
@@ -47,19 +47,14 @@ def main(import_toots, label_toots, hashtag, train_model):
         # `result` will contain the performance metrics of the best model
         print(result)
 
-        logging.info('Model training completed')
+        logging.info('----Model training completed')
 
-    # this shouldn't fetch all tweets: TODO
-    # cursor = db.mastodon_table.find()
-    # Here we need to add labels to the dataset 
-    # for entry in cursor:
-    #     print(entry)
-    #     print("this hate speech?")
-        #TODO finish this and define use case.
-        
+    logging.info('Execution completed successfully')
+    
     print('Execution completed')
     
 
 if __name__ == '__main__':
     main()
 # %%
+    
