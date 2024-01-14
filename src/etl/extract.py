@@ -13,13 +13,29 @@ class MastodonCollector:
     #%%
     # get latest tweets from mastodon 
 
-    def fetch_tweets(self, limit, hashtag=None):
+    def fetch_tweets(self, limit, total_toots_required=100, hashtag=None):
         logging.info('Entered the data ingestion process')
         if hashtag is None:
-            toots = self.m.timeline_public(limit=limit)
+            # toots = self.m.timeline_public(limit=limit)
+            fetched_toots = []
+            last_id = None
+
+            while len(fetched_toots) < total_toots_required:
+                toots = self.m.timeline_public(limit=limit, max_id=last_id)
+                
+                if not toots:
+                    # No more toots to fetch
+                    break
+                
+                fetched_toots.extend(toots)
+                
+                # Update the last_id for the next iteration
+                last_id = toots[-1]['id']
+
+            toots = fetched_toots[:total_toots_required]
+        
         else:
             toots = self.m.timeline_hashtag(limit=limit, hashtag=hashtag)
-        
 
         #%%
         # go through the full response and save each content with the corresponding id 
