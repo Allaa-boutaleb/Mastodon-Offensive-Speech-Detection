@@ -57,7 +57,7 @@ def main(import_toots, label_toots, hashtag, train_model):
     #     print("this hate speech?")
         #TODO finish this and define use case.
         
-    print('all is good so far')
+    print('Execution completed')
     
 
 if __name__ == '__main__':
