@@ -7,10 +7,10 @@ from classify.model_trainer import ModelTrainer
 
 
 @click.command()
-@click.option('--import_toots', default=False)
-@click.option('--label_toots', default=False)
+@click.option('--import_toots', default=True)
+@click.option('--label_toots', default=True)
 @click.option('--hashtag', default=None)
-@click.option('--train_model', default=True)
+@click.option('--train_model', default=False)
 def main(import_toots, label_toots, hashtag, train_model):
     if import_toots:
         logging.info('----Extracting toots from Mastodon initiated')

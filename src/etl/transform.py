@@ -4,7 +4,7 @@ from exception import CustomException
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 import torch
 
-HATE_PROB_THRESHOLD = 0.2
+HATE_PROB_THRESHOLD = 0.5
 class Classifier:
     def __init__(self, model):
         # self.pipeline = pipeline('text-classification', model=model)
