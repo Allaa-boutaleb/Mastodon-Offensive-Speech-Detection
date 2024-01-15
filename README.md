@@ -37,6 +37,8 @@ To run this project on your own machine, you need to perform the following steps
     docker compose down
     ```
 
+**You can experiment with the model we trained using the notebook notebooks/app.ipynb, or train your own model using the same notebook.**
+
 ## TODO
 - [X] Define a use-case: it's not very clear how we expect the user to use this program
 - [X] Define the criteria to fetch data, the number of toots we want
