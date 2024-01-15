@@ -5,6 +5,7 @@ transformers
 click
 pandas
 dill
+imblearn
 scikit-learn
 
 bs4
