@@ -9,6 +9,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.svm import SVC
 from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score
 from sklearn.model_selection import train_test_split, GridSearchCV
+from imblearn.over_sampling import RandomOverSampler
 
 from exception import CustomException
 from logger import logging
@@ -31,13 +32,24 @@ class ModelTrainer:
     def initiate_model_trainer(self, X, y):
         try:
             logging.info("Splitting data into training and testing sets")
-            X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-
             # Text preprocessing - TF-IDF Vectorization
             logging.info("Vectorizing text data")
             vectorizer = TfidfVectorizer(stop_words='english', max_df=0.7)
-            X_train = vectorizer.fit_transform(X_train)
-            X_test = vectorizer.transform(X_test)
+
+            ###
+            X_emb = vectorizer.fit_transform(X)
+
+            # Initialize the RandomOverSampler
+            oversampler = RandomOverSampler(sampling_strategy='auto', random_state=42)
+
+            # Fit and transform your dataset
+            X_resampled, y_resampled = oversampler.fit_resample(X_emb, y)
+
+            X_train, X_test, y_train, y_test = train_test_split(X_resampled, y_resampled, test_size=0.2, random_state=42)
+            ### 
+
+            # X_train = vectorizer.fit_transform(X_train)
+            # X_test = vectorizer.transform(X_test)
 
             models = {
                 "Logistic Regression": LogisticRegression(),
