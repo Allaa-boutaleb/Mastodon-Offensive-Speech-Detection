@@ -1,5 +1,6 @@
 # data
 src/data/100k_en_toots_labeled.csv 
+src/data/embedding_100k_en_toots_labeled_eng.csv
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
