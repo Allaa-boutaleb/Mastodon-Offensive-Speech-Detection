@@ -1,6 +1,10 @@
 ## Based on this project
 
+You can read the report describing the experiments conducted in this project here : [REDS_PROJECT_REPORT.pdf](https://github.com/Allaa-boutaleb/Mastodon-Offensive-Speech-Detection/files/15326500/REDS_PROJECT_REPORT.pdf)
+
+
 > [Docker Pipeline](https://github.com/molemae/docker_pipeline/)
+
 
 Edited for specific use case of storing tweets in MongoDB.
 
