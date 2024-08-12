@@ -8,7 +8,7 @@ You can read the report describing the experiments conducted in this project her
 
 Edited for specific use case of storing tweets in MongoDB.
 
-## What we are doing
+## What we are doing 
 The task we want to do is to: Precisely classify a mastodon public toot as containing hate speech or not.
 
 This project performs the following operations:

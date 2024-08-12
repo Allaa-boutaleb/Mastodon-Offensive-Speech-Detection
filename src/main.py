@@ -35,6 +35,7 @@ def main(import_toots, label_toots, hashtag, train_model):
         logging.info('----Labeling toots from Mastodon completed')
 
     if train_model:
+        
         logging.info('----Model training initiated')
         # Create an instance of the ModelTrainer
         trainer = ModelTrainer()
